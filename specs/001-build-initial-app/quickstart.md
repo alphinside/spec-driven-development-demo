@@ -14,23 +14,11 @@ This guide provides instructions on how to set up and run the application.
     uv python install 3.12
     ```
 
-2.  **Create a virtual environment**:
-    ```bash
-    uv venv
-    ```
-
-3.  **Install dependencies for backend and frontend**:
-    ```bash
-    uv pip install -r backend/requirements.txt
-    uv pip install -r frontend/requirements.txt
-    ```
-    *(Note: `requirements.txt` will be generated in the implementation phase)*
-
 ## Running the Application
 
 1.  **Start the backend server**:
     ```bash
-    uv run backend.main:app --reload
+    uv run backend/src/main.py
     ```
 
 2.  **Start the frontend application**:
