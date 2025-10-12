@@ -1,8 +1,9 @@
 import sys
 import os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../src'))
 
-from sqlmodel import Session, SQLModel, create_engine, select
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../../src"))
+
+from sqlmodel import Session, SQLModel, create_engine
 from sqlalchemy.pool import StaticPool
 import models
 from services.transactions import create_transaction
@@ -11,9 +12,9 @@ from services.transactions import create_transaction
 # Setup test database
 TEST_DATABASE_URL = "sqlite:///:memory:"
 test_engine = create_engine(
-    TEST_DATABASE_URL, 
+    TEST_DATABASE_URL,
     connect_args={"check_same_thread": False},
-    poolclass=StaticPool  # Use StaticPool to ensure same connection is reused
+    poolclass=StaticPool,  # Use StaticPool to ensure same connection is reused
 )
 
 
@@ -31,7 +32,7 @@ def get_test_session():
 def test_create_transaction():
     """Test creating a transaction."""
     setup_test_db()
-    
+
     with Session(test_engine) as session:
         # Create test account and category first
         account = models.Account(name="Test Account")
@@ -41,7 +42,7 @@ def test_create_transaction():
         session.commit()
         session.refresh(account)
         session.refresh(category)
-        
+
         # Create transaction
         transaction_data = models.TransactionCreate(
             amount=100.0,
@@ -49,11 +50,11 @@ def test_create_transaction():
             date="2025-10-12",
             type="expense",
             category_id=category.id,
-            account_id=account.id
+            account_id=account.id,
         )
-        
+
         result = create_transaction(session, transaction_data)
-        
+
         assert result.id is not None
         assert result.amount == 100.0
         assert result.description == "Test transaction"
@@ -69,7 +70,7 @@ def test_transaction_validation():
         date="2025-10-12",
         type="income",
         category_id=1,
-        account_id=1
+        account_id=1,
     )
     assert transaction.amount == 50.0
     assert transaction.type == "income"

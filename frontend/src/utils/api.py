@@ -1,6 +1,7 @@
 """
 API utilities for making requests to the backend.
 """
+
 import requests
 
 API_BASE_URL = "http://127.0.0.1:8000"
@@ -9,18 +10,15 @@ API_BASE_URL = "http://127.0.0.1:8000"
 def create_transaction(transaction_data):
     """
     Create a new transaction.
-    
+
     Args:
         transaction_data (dict): Transaction data including amount, description, date, type, category_id, account_id
-        
+
     Returns:
         tuple: (success: bool, message: str, data: dict)
     """
     try:
-        response = requests.post(
-            f"{API_BASE_URL}/transactions/", 
-            json=transaction_data
-        )
+        response = requests.post(f"{API_BASE_URL}/transactions/", json=transaction_data)
         if response.status_code == 200:
             return True, "Transaction added successfully!", response.json()
         else:
@@ -32,11 +30,11 @@ def create_transaction(transaction_data):
 def get_monthly_summary(year, month):
     """
     Get monthly financial summary.
-    
+
     Args:
         year (int): Year
         month (int): Month (1-12)
-        
+
     Returns:
         tuple: (success: bool, message: str, data: dict)
     """
@@ -49,13 +47,14 @@ def get_monthly_summary(year, month):
     except Exception as e:
         return False, f"Connection error: {str(e)}", None
 
+
 def get_categories(category_type):
     """
     Get categories by type.
-    
+
     Args:
         category_type (str): "income" or "expense"
-        
+
     Returns:
         tuple: (success: bool, message: str, data: list)
     """
@@ -68,10 +67,11 @@ def get_categories(category_type):
     except Exception as e:
         return False, f"Connection error: {str(e)}", None
 
+
 def get_accounts():
     """
     Get all accounts.
-        
+
     Returns:
         tuple: (success: bool, message: str, data: list)
     """

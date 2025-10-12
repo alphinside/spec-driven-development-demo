@@ -9,8 +9,7 @@ router = APIRouter()
 
 @router.post("/transactions/", response_model=models.TransactionRead)
 def create_transaction(
-    transaction: models.TransactionCreate, 
-    db: Session = Depends(get_session)
+    transaction: models.TransactionCreate, db: Session = Depends(get_session)
 ):
     """Create a new transaction (income or expense)."""
     return transaction_service.create_transaction(db=db, transaction=transaction)

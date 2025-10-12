@@ -3,9 +3,9 @@ from sqlmodel import create_engine, Session, SQLModel
 DATABASE_URL = "sqlite:///./sql_app.db"
 
 engine = create_engine(
-    DATABASE_URL, 
+    DATABASE_URL,
     connect_args={"check_same_thread": False},
-    echo=False  # Set to True for debugging
+    echo=False,  # Set to True for debugging
 )
 
 

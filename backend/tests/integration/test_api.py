@@ -1,6 +1,7 @@
 import sys
 import os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../src'))
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../../src"))
 
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
@@ -8,35 +9,34 @@ from sqlmodel import Session, SQLModel, create_engine
 from database import get_session
 import models
 
-
-# Setup test database
 from sqlalchemy.pool import StaticPool
+from api import transactions, summary, lookups
 
 TEST_DATABASE_URL = "sqlite:///:memory:"
 test_engine = create_engine(
-    TEST_DATABASE_URL, 
+    TEST_DATABASE_URL,
     connect_args={"check_same_thread": False},
-    poolclass=StaticPool  # Use StaticPool to ensure same connection is reused
+    poolclass=StaticPool,  # Use StaticPool to ensure same connection is reused
 )
 
 
 def setup_test_db():
     """Create all tables and seed data for testing."""
     SQLModel.metadata.create_all(test_engine)
-    
+
     with Session(test_engine) as session:
         # Add test accounts
         account1 = models.Account(name="Test Cash")
         account2 = models.Account(name="Test Bank")
         session.add(account1)
         session.add(account2)
-        
+
         # Add test categories
         expense_cat = models.Category(name="Test Food", type="expense")
         income_cat = models.Category(name="Test Salary", type="income")
         session.add(expense_cat)
         session.add(income_cat)
-        
+
         session.commit()
 
 
@@ -52,9 +52,6 @@ setup_test_db()
 
 # Create the app without importing from main to avoid lifespan issues
 app = FastAPI()
-
-# Import and include routers
-from api import transactions, summary, lookups
 app.include_router(transactions.router)
 app.include_router(summary.router)
 app.include_router(lookups.router)
@@ -80,14 +77,17 @@ def test_root_endpoint():
 
 def test_create_transaction_endpoint():
     """Test creating an expense transaction."""
-    response = client.post("/transactions/", json={
-        "amount": 100,
-        "description": "Test transaction",
-        "date": "2025-10-12",
-        "type": "expense",
-        "category_id": 1,
-        "account_id": 1
-    })
+    response = client.post(
+        "/transactions/",
+        json={
+            "amount": 100,
+            "description": "Test transaction",
+            "date": "2025-10-12",
+            "type": "expense",
+            "category_id": 1,
+            "account_id": 1,
+        },
+    )
     assert response.status_code == 200
     data = response.json()
     assert data["amount"] == 100
@@ -96,14 +96,17 @@ def test_create_transaction_endpoint():
 
 def test_create_income_transaction_endpoint():
     """Test creating an income transaction."""
-    response = client.post("/transactions/", json={
-        "amount": 500,
-        "description": "Test income",
-        "date": "2025-10-12",
-        "type": "income",
-        "category_id": 2,
-        "account_id": 2
-    })
+    response = client.post(
+        "/transactions/",
+        json={
+            "amount": 500,
+            "description": "Test income",
+            "date": "2025-10-12",
+            "type": "income",
+            "category_id": 2,
+            "account_id": 2,
+        },
+    )
     assert response.status_code == 200
     data = response.json()
     assert data["amount"] == 500
