@@ -31,11 +31,7 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-- **Code Quality**: Does the proposed code adhere to style guides and pass static analysis?
-- **Testing Standards**: Are unit, integration, and end-to-end tests planned for all new features?
-- **User Experience Consistency**: Does the plan account for UI/UX consistency with the existing application?
-- **Performance Requirements**: Are performance benchmarks defined and is there a plan to test against them?
-- **Domain-Driven Design**: Does the proposed code structure align with business domains?
+[Gates determined based on constitution file]
 
 ## Project Structure
 

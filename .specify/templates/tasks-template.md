@@ -156,18 +156,6 @@ Examples of foundational tasks (adjust based on your project):
 
 ---
 
-## Phase N+1: Constitutional Alignment
-
-**Purpose**: Verify that the implemented feature adheres to the project's core principles.
-
-- [ ] TXXX **Code Quality**: Run linting and static analysis tools to verify code quality.
-- [ ] TXXX **Testing Standards**: Verify that all new code is covered by tests and that test coverage meets project standards.
-- [ ] TXXX **User Experience Consistency**: Manually review the feature to ensure it aligns with the project's design system and style guide.
-- [ ] TXXX **Performance Requirements**: Run performance tests to ensure the feature meets performance benchmarks.
-- [ ] TXXX **Domain-Driven Design**: Manually review the code structure to ensure it aligns with business domains.
-
----
-
 ## Dependencies & Execution Order
 
 ### Phase Dependencies
