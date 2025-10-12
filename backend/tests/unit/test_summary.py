@@ -3,6 +3,7 @@ import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../src'))
 
 from sqlmodel import Session, SQLModel, create_engine
+from sqlalchemy.pool import StaticPool
 import models
 from services.summary import get_summary
 from datetime import date
@@ -10,7 +11,11 @@ from datetime import date
 
 # Setup test database
 TEST_DATABASE_URL = "sqlite:///:memory:"
-test_engine = create_engine(TEST_DATABASE_URL, connect_args={"check_same_thread": False})
+test_engine = create_engine(
+    TEST_DATABASE_URL, 
+    connect_args={"check_same_thread": False},
+    poolclass=StaticPool  # Use StaticPool to ensure same connection is reused
+)
 
 
 def setup_test_db():
