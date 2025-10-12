@@ -4,4 +4,4 @@ This repository demonstrates the use of [`spec-kit`](https://github.com/github/s
 
 ## Workshop Challenges
 
-Add each accounts balance, below total expenses in summary page. Sorted alphabetically.
+Show balance of each accounts below total expenses in summary page. Sorted alphabetically.
