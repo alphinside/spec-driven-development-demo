@@ -61,7 +61,7 @@ def _create_summary_card(title, amount, color):
             'color': COLORS['text-light'],
             'marginBottom': '8px'
         }),
-        html.Div(f"${amount:,.2f}", style={
+        html.Div(f"IDR {amount:,.2f}", style={
             'fontSize': '32px',
             'fontWeight': '700',
             'color': color
