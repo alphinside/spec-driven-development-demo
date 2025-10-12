@@ -10,8 +10,8 @@ These tasks initialize the project structure and must be completed before any ot
 
 - **T001**: [Setup] Initialize the `backend` FastAPI application structure in `backend/`.
 - **T002**: [Setup] Initialize the `frontend` Dash application structure in `frontend/`.
-- **T003**: [Setup] Configure `uv` for both `backend` and `frontend` projects.
-- **T004**: [Setup] Configure `ruff` for the entire project.
+- **T003**: [Setup] Configure centralized `uv` for the entire project.
+- **T004**: [Setup] Configure centralized `ruff` for the entire project.
 
 ## Phase 2: Foundational Tasks
 

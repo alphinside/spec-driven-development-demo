@@ -1,15 +1,9 @@
-import sys
-import os
-
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../../src"))
-
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from sqlmodel import Session, SQLModel, create_engine
+from sqlalchemy.pool import StaticPool
 from database import get_session
 import models
-
-from sqlalchemy.pool import StaticPool
 from api import transactions, summary, lookups
 
 TEST_DATABASE_URL = "sqlite:///:memory:"
