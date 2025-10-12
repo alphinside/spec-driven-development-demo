@@ -1,50 +1,45 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+---
+Sync Impact Report
+---
+Version change: 0.0.0 → 1.0.0
+Modified principles:
+- PRINCIPLE_1_NAME → I. Code Quality
+- PRINCIPLE_2_NAME → II. Testing Standards
+- PRINCIPLE_3_NAME → III. User Experience Consistency
+- PRINCIPLE_4_NAME → IV. Performance Requirements
+- PRINCIPLE_5_NAME → V. Governance
+Added sections: None
+Removed sections:
+- SECTION_2_NAME
+- SECTION_3_NAME
+Templates requiring updates:
+- ✅ .specify/templates/plan-template.md
+- ⚠ .specify/templates/spec-template.md
+- ⚠ .specify/templates/tasks-template.md
+Follow-up TODOs: None
+-->
+# Spec-Driven Development Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Code Quality
+Clarity, maintainability, and style are not optional. All code MUST adhere to established coding standards and pass automated linting and formatting checks before being merged.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Testing Standards
+Comprehensive and meaningful tests are mandatory. All new features MUST be accompanied by unit and integration tests that validate their correctness and robustness.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. User Experience Consistency
+A cohesive and predictable user experience is paramount. All user-facing components and interactions MUST adhere to the established design system and style guide.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Performance Requirements
+Performance is a feature. All new features and modifications MUST be designed and implemented to meet defined performance targets for latency, throughput, and resource utilization.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
-
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
-
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### V. Governance
+This Constitution is the supreme governing document for this project. All development practices, architectural decisions, and code contributions MUST align with its principles. Amendments to this Constitution require a formal proposal, review, and approval process.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+All pull requests and code reviews MUST verify compliance with the principles outlined in this Constitution. Any deviation from these principles requires a formal exemption request and approval from the project maintainers.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-10-12 | **Last Amended**: 2025-10-12
