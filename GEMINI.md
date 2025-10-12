@@ -3,22 +3,71 @@
 Auto-generated from all feature plans. Last updated: 2025-10-12
 
 ## Active Technologies
-- Python 3.12 + FastAPI (backend), Dash (frontend) (001-build-initial-app)
+- Python 3.12 + FastAPI (backend), Dash (frontend), SQLModel (database) (001-build-initial-app)
 
 ## Project Structure
 ```
-src/
-tests/
+backend/
+├── src/
+│   ├── database.py
+│   ├── initial_data.py
+│   ├── main.py
+│   ├── models.py
+│   ├── api/
+│   │   ├── lookups.py
+│   │   ├── summary.py
+│   │   └── transactions.py
+│   └── services/
+│       ├── lookups.py
+│       ├── summary.py
+│       └── transactions.py
+└── tests/
+    ├── integration/
+    │   └── test_api.py
+    └── unit/
+        ├── test_summary.py
+        └── test_transactions.py
+frontend/
+└── src/
+    ├── app.py
+    ├── styles.py
+    ├── callbacks/
+    │   ├── summary_callbacks.py
+    │   └── transaction_callbacks.py
+    ├── components/
+    │   └── navbar.py
+    ├── pages/
+    │   ├── summary.py
+    │   └── transaction.py
+    └── utils/
+        └── api.py
 ```
 
 ## Commands
-cd src [ONLY COMMANDS FOR ACTIVE TECHNOLOGIES][ONLY COMMANDS FOR ACTIVE TECHNOLOGIES] pytest [ONLY COMMANDS FOR ACTIVE TECHNOLOGIES][ONLY COMMANDS FOR ACTIVE TECHNOLOGIES] ruff check .
+
+to run the backend:
+
+```
+uv run backend/src/main.py
+```
+
+to run the frontend:
+
+```
+uv run frontend/src/app.py
+```
+
+to run the tests:
+
+```
+uv run pytest
+```
 
 ## Code Style
 Python 3.12: Follow standard conventions
 
 ## Recent Changes
-- 001-001-build-initial-app: Added Python 3.12 + FastAPI (backend), Dash (frontend)
+- 001-build-initial-app: Added Python 3.12 + FastAPI (backend), Dash (frontend), SQLModel (database)
 
 <!-- MANUAL ADDITIONS START -->
 <!-- MANUAL ADDITIONS END -->
