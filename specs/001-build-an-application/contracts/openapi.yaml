@@ -1,0 +1,194 @@
+openapi: 3.0.0
+info:
+  title: Expense Tracker API
+  version: 1.0.0
+paths:
+  /transactions/{year}/{month}:
+    get:
+      summary: List all transactions for a given month and year
+      parameters:
+        - name: year
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 2025
+        - name: month
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 10
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 10
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: A list of transactions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Transaction'
+  /transactions:
+    post:
+      summary: Create a new transaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewTransaction'
+      responses:
+        '201':
+          description: The created transaction
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+  /categories:
+    get:
+      summary: List all categories
+      responses:
+        '200':
+          description: A list of categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+    post:
+      summary: Create a new category
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewCategory'
+      responses:
+        '201':
+          description: The created category
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+  /accounts:
+    get:
+      summary: List all accounts
+      responses:
+        '200':
+          description: A list of accounts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Account'
+  /reports/monthly:
+    get:
+      summary: Get the monthly report
+      parameters:
+        - name: month
+          in: query
+          required: true
+          schema:
+            type: integer
+            example: 10
+        - name: year
+          in: query
+          required: true
+          schema:
+            type: integer
+            example: 2025
+      responses:
+        '200':
+          description: The monthly report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonthlyReport'
+components:
+  schemas:
+    Transaction:
+      type: object
+      properties:
+        id: 
+          type: string
+          format: uuid
+        date:
+          type: string
+          format: date
+        amount:
+          type: number
+        type:
+          type: string
+          enum: [income, expense]
+        category_id:
+          type: string
+          format: uuid
+        account_id:
+          type: string
+          format: uuid
+    NewTransaction:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        amount:
+          type: number
+        type:
+          type: string
+          enum: [income, expense]
+        category_id:
+          type: string
+          format: uuid
+        account_id:
+          type: string
+          format: uuid
+    Category:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        type:
+          type: string
+          enum: [income, expense]
+    NewCategory:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          enum: [income, expense]
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        type:
+          type: string
+          enum: [cash, bank]
+    MonthlyReport:
+      type: object
+      properties:
+        total_income:
+          type: number
+        total_expense:
+          type: number
