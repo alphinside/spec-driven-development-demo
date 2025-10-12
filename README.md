@@ -4,4 +4,5 @@ This repository demonstrates the use of [`spec-kit`](https://github.com/github/s
 
 ## Workshop Challenges
 
-Show balance of each accounts below total expenses in summary page. Sorted alphabetically.
+Specification: Show balance of each accounts below total expenses in summary page. Sorted alphabetically.
+Technical Plan: Add "balance" field to the account domain, all transaction must be a database transaction to this balance field. Use current database implementation for this
