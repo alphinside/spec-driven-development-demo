@@ -1,7 +1,7 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from initial_data import init_db
-from api import transactions, summary
+from api import transactions, summary, lookups
 
 
 @asynccontextmanager
@@ -16,6 +16,7 @@ app = FastAPI(lifespan=lifespan)
 
 app.include_router(transactions.router)
 app.include_router(summary.router)
+app.include_router(lookups.router)
 
 
 @app.get("/")

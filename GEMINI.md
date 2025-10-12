@@ -3,7 +3,7 @@
 Auto-generated from all feature plans. Last updated: 2025-10-12
 
 ## Active Technologies
-- Python 3.12 + FastAPI (backend), Dash (frontend) (001-build-a-local)
+- Python 3.12 + FastAPI (backend), Dash (frontend) (001-build-initial-app)
 
 ## Project Structure
 ```
@@ -18,7 +18,7 @@ cd src [ONLY COMMANDS FOR ACTIVE TECHNOLOGIES][ONLY COMMANDS FOR ACTIVE TECHNOLO
 Python 3.12: Follow standard conventions
 
 ## Recent Changes
-- 001-build-a-local: Added Python 3.12 + FastAPI (backend), Dash (frontend)
+- 001-001-build-initial-app: Added Python 3.12 + FastAPI (backend), Dash (frontend)
 
 <!-- MANUAL ADDITIONS START -->
 <!-- MANUAL ADDITIONS END -->

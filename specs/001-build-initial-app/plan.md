@@ -1,7 +1,7 @@
 # Implementation Plan: Local Expense Organizer
 
 **Branch**: `001-build-a-local` | **Date**: 2025-10-12 | **Spec**: [spec.md]
-**Input**: Feature specification from `/specs/001-build-a-local/spec.md`
+**Input**: Feature specification from `/specs/001-001-build-initial-app/spec.md`
 
 **Note**: This template is filled in by the `/speckit.plan` command. See `.specify/templates/commands/plan.md` for the execution workflow.
 
@@ -36,7 +36,7 @@ This plan outlines the implementation of a local expense organizer application. 
 ### Documentation (this feature)
 
 ```
-specs/001-build-a-local/
+specs/001-001-build-initial-app/
 ├── plan.md              # This file (/speckit.plan command output)
 ├── research.md          # Phase 0 output (/speckit.plan command)
 ├── data-model.md        # Phase 1 output (/speckit.plan command)
@@ -50,17 +50,39 @@ specs/001-build-a-local/
 ```
 backend/
 ├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
+│   ├── database.py
+│   ├── initial_data.py
+│   ├── main.py
+│   ├── models.py
+│   ├── api/
+│   │   ├── lookups.py
+│   │   ├── summary.py
+│   │   └── transactions.py
+│   └── services/
+│       ├── lookups.py
+│       ├── summary.py
+│       └── transactions.py
 └── tests/
+    ├── integration/
+    │   └── test_api.py
+    └── unit/
+        ├── test_summary.py
+        └── test_transactions.py
 
 frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
-└── tests/
+└── src/
+    ├── app.py
+    ├── styles.py
+    ├── callbacks/
+    │   ├── summary_callbacks.py
+    │   └── transaction_callbacks.py
+    ├── components/
+    │   └── navbar.py
+    ├── pages/
+    │   ├── summary.py
+    │   └── transaction.py
+    └── utils/
+        └── api.py
 ```
 
 **Structure Decision**: A backend/frontend monorepo structure will be used. The `backend` directory will contain the FastAPI application, and the `frontend` directory will contain the Dash application. This separation allows for clear distinction between the two parts of the application while keeping them in a single repository.

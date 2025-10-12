@@ -3,8 +3,7 @@ Callback functions for transaction-related interactions.
 """
 from dash import html, Input, Output, State
 from styles import COLORS
-from utils.api import create_transaction
-
+from utils.api import create_transaction, get_categories, get_accounts
 
 def register_transaction_callbacks(app):
     """Register all transaction-related callbacks."""
@@ -38,6 +37,29 @@ def register_transaction_callbacks(app):
                 return _create_success_message(f"✓ {trans_type.capitalize()} added successfully!")
             else:
                 return _create_error_message(f"✗ {message}")
+
+    @app.callback(
+        Output('transaction-category', 'options'),
+        Input('transaction-type', 'value')
+    )
+    def update_categories_dropdown(trans_type):
+        """Update categories dropdown based on transaction type."""
+        success, message, data = get_categories(trans_type)
+        if success:
+            return [{'label': c['name'], 'value': c['id']} for c in data]
+        return []
+
+    @app.callback(
+        Output('transaction-account', 'options'),
+        Input('url', 'pathname') # This is a trick to run on page load
+    )
+    def update_accounts_dropdown(pathname):
+        """Update accounts dropdown on page load."""
+        if pathname == '/': # Assuming this is the transaction page
+            success, message, data = get_accounts()
+            if success:
+                return [{'label': a['name'], 'value': a['id']} for a in data]
+        return []
 
 
 def _create_success_message(message):

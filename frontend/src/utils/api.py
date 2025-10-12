@@ -48,3 +48,38 @@ def get_monthly_summary(year, month):
             return False, f"Error: {response.text}", None
     except Exception as e:
         return False, f"Connection error: {str(e)}", None
+
+def get_categories(category_type):
+    """
+    Get categories by type.
+    
+    Args:
+        category_type (str): "income" or "expense"
+        
+    Returns:
+        tuple: (success: bool, message: str, data: list)
+    """
+    try:
+        response = requests.get(f"{API_BASE_URL}/categories/{category_type}")
+        if response.status_code == 200:
+            return True, "Success", response.json()
+        else:
+            return False, f"Error: {response.text}", None
+    except Exception as e:
+        return False, f"Connection error: {str(e)}", None
+
+def get_accounts():
+    """
+    Get all accounts.
+        
+    Returns:
+        tuple: (success: bool, message: str, data: list)
+    """
+    try:
+        response = requests.get(f"{API_BASE_URL}/accounts")
+        if response.status_code == 200:
+            return True, "Success", response.json()
+        else:
+            return False, f"Error: {response.text}", None
+    except Exception as e:
+        return False, f"Connection error: {str(e)}", None
