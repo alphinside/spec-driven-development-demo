@@ -6,7 +6,7 @@ This repository demonstrates the use of [`spec-kit`](https://github.com/github/s
 
 Do the following prompt to test development in this repo to demonstrate using spec-kit and Gemini CLI in brownfield project
 
-Specification: Show balance of each accounts below total expenses in summary page. Sorted alphabetically.
+Specification: Show balance of each accounts above Monthly Summary in summary page with a button to manual refresh the balance. Sorted alphabetically.
 
 Technical Plan: Add "balance" field to the account domain, all transaction must be a database transaction to this balance field. Use current database implementation for this
 
